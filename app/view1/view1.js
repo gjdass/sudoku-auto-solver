@@ -9,6 +9,15 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', 'gridFactory', function($scope, gridFactory) {
+  $scope.grid = [];
+
+  activate();
+
+  function activate() {
+    gridFactory.getGrids().then(function (grid) {
+      $scope.grid = grid;
+    });
+  }
 
 }]);

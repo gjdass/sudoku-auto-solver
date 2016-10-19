@@ -1,0 +1,43 @@
+<style>
+    table {
+        border-collapse: collapse;
+        font-family: Calibri, sans-serif;
+    }
+
+    colgroup, tbody {
+        border: solid medium;
+    }
+
+    td {
+        border: solid thin;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        padding: 0;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <table>
+            <colgroup>
+                <col>
+                <col>
+                <col>
+            <colgroup>
+                <col>
+                <col>
+                <col>
+            <colgroup>
+                <col>
+                <col>
+                <col>
+            <tbody>
+            <tr ng-repeat="data in datas">
+                <td ng-repeat="number in data track by $index">{{number || ''}}
+        </table>
+    </div>
+    <div class="col-md-6">
+        coucou
+    </div>
+</div>
