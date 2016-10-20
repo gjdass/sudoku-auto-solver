@@ -81,17 +81,17 @@ angular.module('myApp.sudoku-solver-service', [])
         if (this.findEmptyPos(grid).length > 0) {
             return 0;
         }
+        //check rows
         for (var i = 0; i < grid.length; i++) {
             var check = [false, false, false, false, false, false, false, false, false];
             for (var j = 0; j < grid[i].length; j++) {
                 if (!grid[i][j]) {
-                    return false;
+                    return 0;
                 }
                 check[grid[i][j] - 1] = true;
             }
-            for (var i = 0; i < check.length; i++) {
-                if (!check[i]) {
-                    console.log(check);
+            for (var j = 0; j < check.length; j++) {
+                if (!check[j]) {
                     return 0;
                 }
             }

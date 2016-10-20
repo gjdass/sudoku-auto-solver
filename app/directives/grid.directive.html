@@ -29,10 +29,26 @@
     .alert {
         margin-top:20px;
     }
+
+    .btn-group {
+        width: 100%;
+    }
+    .double-button {
+        width: 50%;
+    }
 </style>
 
 <div class="row">
     <div class="col-md-5">
+        <div class="btn-group btn-group-lg" role="group" aria-label="...">
+            <button ng-click="previousGrid()" type="button" class="btn btn-default double-button" ng-disabled="currentGrid === 0">
+                <span class=" glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <button ng-click="nextGrid()" type="button" class="btn btn-default double-button" ng-disabled="currentGrid === grids.length - 1">
+                <span class=" glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+        <br><br>
         <table>
             <colgroup>
                 <col>
@@ -53,10 +69,6 @@
         <div class="alert" role="alert" ng-show="showAlert"></div>
     </div>
     <div class="col-md-3">
-        <a ng-click="solve()" class="btn btn-lg btn-block btn-success" data-toggle="tooltip" data-placement="left" data-animation="true" title="Solve the entire sudoku">
-            <span class="glyphicon glyphicon-ok pull-left"></span> Solve
-        </a>
-        <br>
         <a ng-if="!editMode" ng-click="edit()" class="btn btn-lg btn-block btn-default" data-toggle="tooltip" data-placement="left" data-animation="true" title="Edit manually the grid">
             <span class="glyphicon glyphicon-pencil pull-left"></span> Edit
         </a>
@@ -68,15 +80,19 @@
             <span class="glyphicon glyphicon-flag pull-left"></span> Check rules
         </a>
         <br>
-        <a ng-click="reset()" class="btn btn-lg btn-block btn-danger" data-toggle="tooltip" data-placement="left" data-animation="true" title="Reset all work done so far :'(">
+        <a ng-click="solve()" class="btn btn-lg btn-block btn-success" data-toggle="tooltip" data-placement="left" data-animation="true" title="Solve automatically the sudoku / Validate the grid">
+            <span class="glyphicon glyphicon-ok pull-left"></span> Solve
+        </a>
+        <br>
+        <a ng-click="reset()" class="btn btn-lg btn-block btn-danger" data-toggle="tooltip" data-placement="left" data-animation="true" title="Reset all the grid and inputs">
             <span class="glyphicon glyphicon-repeat pull-left"></span> Reset
         </a>
     </div>
     <div class="col-md-4">
         <p><strong>Informations :</strong></p>
-        <p>Solve it all by clicking on Solve button. It will solve automatically the all thing.</p>
-        <p>Edit button lets you update the grid yourself. Then, by clicking on solve, it will check the result.</p>
-        <p>Check rules lets you check if the actual grid respects the rules.</p>
-        <p>Reset will reset the sudoku grid to the beginning.</p>
+        <p><i>Solve</i> it all by clicking on Solve button. It will solve automatically the all thing.</p>
+        <p><i>Edit</i> button lets you update the grid yourself. Then, by clicking on solve, it will check the result.</p>
+        <p><i>Check rules</i> lets you check if the actual grid respects the rules.</p>
+        <p><i>Reset</i> will reset the sudoku grid to the beginning.</p>
     </div>
 </div>

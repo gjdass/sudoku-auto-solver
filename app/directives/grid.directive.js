@@ -13,8 +13,10 @@ angular.module('myApp.grid-directive', [])
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
-            $scope.savedGrid = angular.copy($scope.datas);
-            $scope.grid = angular.copy($scope.datas);
+            $scope.currentGrid = 0;
+            $scope.grids = angular.copy($scope.datas);
+            $scope.savedGrid = angular.copy($scope.grids[$scope.currentGrid]);
+            $scope.grid = angular.copy($scope.grids[$scope.currentGrid]);
             $scope.trim = function () {
                 // replacing 0 by empty string (for better display)
                 for (var i = 0; i < $scope.grid.length; i++) {
@@ -67,6 +69,21 @@ angular.module('myApp.grid-directive', [])
                 $scope.editMode = false;
                 $scope.trim();
                 $scope.solverOk = 1;
+                $scope.rulesOk = 1;
+            };
+
+            $scope.nextGrid = function () {
+                if ($scope.currentGrid === $scope.grids.length + 1) { return; }
+                $scope.currentGrid++;
+                $scope.savedGrid = angular.copy($scope.grids[$scope.currentGrid]);
+                $scope.reset();
+            };
+
+            $scope.previousGrid = function () {
+                if ($scope.currentGrid === 0) { return; }
+                $scope.currentGrid--;
+                $scope.savedGrid = angular.copy($scope.grids[$scope.currentGrid]);
+                $scope.reset();
             };
 
             function showAlert(toSwitchOn, goodMsg, badMsg) {
