@@ -7,7 +7,8 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.grid-directive',
   'myApp.header-directive',
-  'myApp.grid-factory'
+  'myApp.grid-factory',
+  'myApp.sudoku-solver-service'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
